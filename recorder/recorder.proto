@@ -23,15 +23,20 @@ package recorder;
 
 // The record service definition.
 service Recorder {
-  rpc StartRecord (RequestParam) returns (ReplyParam) {}
-  rpc StopRecord (RequestParam) returns (ReplyParam) {}
+  rpc StartRecord (StartRecordReq) returns (StartRecordRes) {}
+  rpc StopRecord (StopRecordReq) returns (StopRecordRes) {}
 }
 
-message RequestParam {
+message StartRecordReq {
   string roomid = 1;
 }
 
-message ReplyParam {
-  int32 errcode = 1;
+message StartRecordRes {
 }
 
+message StopRecordReq {
+  string roomid = 1;
+}
+
+message StopRecordRes {
+}

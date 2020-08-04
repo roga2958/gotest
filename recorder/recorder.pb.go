@@ -44,7 +44,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-type RequestParam struct {
+type StartRecordReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -52,8 +52,8 @@ type RequestParam struct {
 	Roomid string `protobuf:"bytes,1,opt,name=roomid,proto3" json:"roomid,omitempty"`
 }
 
-func (x *RequestParam) Reset() {
-	*x = RequestParam{}
+func (x *StartRecordReq) Reset() {
+	*x = StartRecordReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_recorder_recorder_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,13 +61,13 @@ func (x *RequestParam) Reset() {
 	}
 }
 
-func (x *RequestParam) String() string {
+func (x *StartRecordReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RequestParam) ProtoMessage() {}
+func (*StartRecordReq) ProtoMessage() {}
 
-func (x *RequestParam) ProtoReflect() protoreflect.Message {
+func (x *StartRecordReq) ProtoReflect() protoreflect.Message {
 	mi := &file_recorder_recorder_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -79,28 +79,26 @@ func (x *RequestParam) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RequestParam.ProtoReflect.Descriptor instead.
-func (*RequestParam) Descriptor() ([]byte, []int) {
+// Deprecated: Use StartRecordReq.ProtoReflect.Descriptor instead.
+func (*StartRecordReq) Descriptor() ([]byte, []int) {
 	return file_recorder_recorder_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RequestParam) GetRoomid() string {
+func (x *StartRecordReq) GetRoomid() string {
 	if x != nil {
 		return x.Roomid
 	}
 	return ""
 }
 
-type ReplyParam struct {
+type StartRecordRes struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Errcode int32 `protobuf:"varint,1,opt,name=errcode,proto3" json:"errcode,omitempty"`
 }
 
-func (x *ReplyParam) Reset() {
-	*x = ReplyParam{}
+func (x *StartRecordRes) Reset() {
+	*x = StartRecordRes{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_recorder_recorder_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -108,13 +106,13 @@ func (x *ReplyParam) Reset() {
 	}
 }
 
-func (x *ReplyParam) String() string {
+func (x *StartRecordRes) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReplyParam) ProtoMessage() {}
+func (*StartRecordRes) ProtoMessage() {}
 
-func (x *ReplyParam) ProtoReflect() protoreflect.Message {
+func (x *StartRecordRes) ProtoReflect() protoreflect.Message {
 	mi := &file_recorder_recorder_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -126,16 +124,94 @@ func (x *ReplyParam) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReplyParam.ProtoReflect.Descriptor instead.
-func (*ReplyParam) Descriptor() ([]byte, []int) {
+// Deprecated: Use StartRecordRes.ProtoReflect.Descriptor instead.
+func (*StartRecordRes) Descriptor() ([]byte, []int) {
 	return file_recorder_recorder_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ReplyParam) GetErrcode() int32 {
-	if x != nil {
-		return x.Errcode
+type StopRecordReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Roomid string `protobuf:"bytes,1,opt,name=roomid,proto3" json:"roomid,omitempty"`
+}
+
+func (x *StopRecordReq) Reset() {
+	*x = StopRecordReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_recorder_recorder_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
 	}
-	return 0
+}
+
+func (x *StopRecordReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopRecordReq) ProtoMessage() {}
+
+func (x *StopRecordReq) ProtoReflect() protoreflect.Message {
+	mi := &file_recorder_recorder_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopRecordReq.ProtoReflect.Descriptor instead.
+func (*StopRecordReq) Descriptor() ([]byte, []int) {
+	return file_recorder_recorder_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *StopRecordReq) GetRoomid() string {
+	if x != nil {
+		return x.Roomid
+	}
+	return ""
+}
+
+type StopRecordRes struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *StopRecordRes) Reset() {
+	*x = StopRecordRes{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_recorder_recorder_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StopRecordRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopRecordRes) ProtoMessage() {}
+
+func (x *StopRecordRes) ProtoReflect() protoreflect.Message {
+	mi := &file_recorder_recorder_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopRecordRes.ProtoReflect.Descriptor instead.
+func (*StopRecordRes) Descriptor() ([]byte, []int) {
+	return file_recorder_recorder_proto_rawDescGZIP(), []int{3}
 }
 
 var File_recorder_recorder_proto protoreflect.FileDescriptor
@@ -143,20 +219,23 @@ var File_recorder_recorder_proto protoreflect.FileDescriptor
 var file_recorder_recorder_proto_rawDesc = []byte{
 	0x0a, 0x17, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72,
 	0x64, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x72, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x65, 0x72, 0x22, 0x26, 0x0a, 0x0c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x50, 0x61,
-	0x72, 0x61, 0x6d, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x6f, 0x6f, 0x6d, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x6f, 0x6f, 0x6d, 0x69, 0x64, 0x22, 0x26, 0x0a, 0x0a, 0x52,
-	0x65, 0x70, 0x6c, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x12, 0x18, 0x0a, 0x07, 0x65, 0x72, 0x72,
-	0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x65, 0x72, 0x72, 0x63,
-	0x6f, 0x64, 0x65, 0x32, 0x87, 0x01, 0x0a, 0x08, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72,
-	0x12, 0x3d, 0x0a, 0x0b, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x12,
-	0x16, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x1a, 0x14, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64,
-	0x65, 0x72, 0x2e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x22, 0x00, 0x12,
-	0x3c, 0x0a, 0x0a, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x12, 0x16, 0x2e,
-	0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x50, 0x61, 0x72, 0x61, 0x6d, 0x1a, 0x14, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72,
-	0x2e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x22, 0x00, 0x62, 0x06, 0x70,
+	0x64, 0x65, 0x72, 0x22, 0x28, 0x0a, 0x0e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65, 0x63, 0x6f,
+	0x72, 0x64, 0x52, 0x65, 0x71, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x6f, 0x6f, 0x6d, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x6f, 0x6f, 0x6d, 0x69, 0x64, 0x22, 0x10, 0x0a,
+	0x0e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x22,
+	0x27, 0x0a, 0x0d, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71,
+	0x12, 0x16, 0x0a, 0x06, 0x72, 0x6f, 0x6f, 0x6d, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x06, 0x72, 0x6f, 0x6f, 0x6d, 0x69, 0x64, 0x22, 0x0f, 0x0a, 0x0d, 0x53, 0x74, 0x6f, 0x70,
+	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x32, 0x91, 0x01, 0x0a, 0x08, 0x52, 0x65,
+	0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x43, 0x0a, 0x0b, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x12, 0x18, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72,
+	0x2e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x1a,
+	0x18, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x53, 0x74, 0x61, 0x72, 0x74,
+	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x40, 0x0a, 0x0a, 0x53,
+	0x74, 0x6f, 0x70, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x12, 0x17, 0x2e, 0x72, 0x65, 0x63, 0x6f,
+	0x72, 0x64, 0x65, 0x72, 0x2e, 0x53, 0x74, 0x6f, 0x70, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52,
+	0x65, 0x71, 0x1a, 0x17, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x53, 0x74,
+	0x6f, 0x70, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x22, 0x00, 0x62, 0x06, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
@@ -172,16 +251,18 @@ func file_recorder_recorder_proto_rawDescGZIP() []byte {
 	return file_recorder_recorder_proto_rawDescData
 }
 
-var file_recorder_recorder_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_recorder_recorder_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_recorder_recorder_proto_goTypes = []interface{}{
-	(*RequestParam)(nil), // 0: recorder.RequestParam
-	(*ReplyParam)(nil),   // 1: recorder.ReplyParam
+	(*StartRecordReq)(nil), // 0: recorder.StartRecordReq
+	(*StartRecordRes)(nil), // 1: recorder.StartRecordRes
+	(*StopRecordReq)(nil),  // 2: recorder.StopRecordReq
+	(*StopRecordRes)(nil),  // 3: recorder.StopRecordRes
 }
 var file_recorder_recorder_proto_depIdxs = []int32{
-	0, // 0: recorder.Recorder.StartRecord:input_type -> recorder.RequestParam
-	0, // 1: recorder.Recorder.StopRecord:input_type -> recorder.RequestParam
-	1, // 2: recorder.Recorder.StartRecord:output_type -> recorder.ReplyParam
-	1, // 3: recorder.Recorder.StopRecord:output_type -> recorder.ReplyParam
+	0, // 0: recorder.Recorder.StartRecord:input_type -> recorder.StartRecordReq
+	2, // 1: recorder.Recorder.StopRecord:input_type -> recorder.StopRecordReq
+	1, // 2: recorder.Recorder.StartRecord:output_type -> recorder.StartRecordRes
+	3, // 3: recorder.Recorder.StopRecord:output_type -> recorder.StopRecordRes
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -196,7 +277,7 @@ func file_recorder_recorder_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_recorder_recorder_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RequestParam); i {
+			switch v := v.(*StartRecordReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -208,7 +289,31 @@ func file_recorder_recorder_proto_init() {
 			}
 		}
 		file_recorder_recorder_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReplyParam); i {
+			switch v := v.(*StartRecordRes); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_recorder_recorder_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StopRecordReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_recorder_recorder_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StopRecordRes); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -226,7 +331,7 @@ func file_recorder_recorder_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_recorder_recorder_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

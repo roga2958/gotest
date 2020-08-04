@@ -17,8 +17,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RecorderClient interface {
-	StartRecord(ctx context.Context, in *RequestParam, opts ...grpc.CallOption) (*ReplyParam, error)
-	StopRecord(ctx context.Context, in *RequestParam, opts ...grpc.CallOption) (*ReplyParam, error)
+	StartRecord(ctx context.Context, in *StartRecordReq, opts ...grpc.CallOption) (*StartRecordRes, error)
+	StopRecord(ctx context.Context, in *StopRecordReq, opts ...grpc.CallOption) (*StopRecordRes, error)
 }
 
 type recorderClient struct {
@@ -29,8 +29,8 @@ func NewRecorderClient(cc grpc.ClientConnInterface) RecorderClient {
 	return &recorderClient{cc}
 }
 
-func (c *recorderClient) StartRecord(ctx context.Context, in *RequestParam, opts ...grpc.CallOption) (*ReplyParam, error) {
-	out := new(ReplyParam)
+func (c *recorderClient) StartRecord(ctx context.Context, in *StartRecordReq, opts ...grpc.CallOption) (*StartRecordRes, error) {
+	out := new(StartRecordRes)
 	err := c.cc.Invoke(ctx, "/recorder.Recorder/StartRecord", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -38,8 +38,8 @@ func (c *recorderClient) StartRecord(ctx context.Context, in *RequestParam, opts
 	return out, nil
 }
 
-func (c *recorderClient) StopRecord(ctx context.Context, in *RequestParam, opts ...grpc.CallOption) (*ReplyParam, error) {
-	out := new(ReplyParam)
+func (c *recorderClient) StopRecord(ctx context.Context, in *StopRecordReq, opts ...grpc.CallOption) (*StopRecordRes, error) {
+	out := new(StopRecordRes)
 	err := c.cc.Invoke(ctx, "/recorder.Recorder/StopRecord", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -51,8 +51,8 @@ func (c *recorderClient) StopRecord(ctx context.Context, in *RequestParam, opts 
 // All implementations must embed UnimplementedRecorderServer
 // for forward compatibility
 type RecorderServer interface {
-	StartRecord(context.Context, *RequestParam) (*ReplyParam, error)
-	StopRecord(context.Context, *RequestParam) (*ReplyParam, error)
+	StartRecord(context.Context, *StartRecordReq) (*StartRecordRes, error)
+	StopRecord(context.Context, *StopRecordReq) (*StopRecordRes, error)
 	mustEmbedUnimplementedRecorderServer()
 }
 
@@ -60,10 +60,10 @@ type RecorderServer interface {
 type UnimplementedRecorderServer struct {
 }
 
-func (*UnimplementedRecorderServer) StartRecord(context.Context, *RequestParam) (*ReplyParam, error) {
+func (*UnimplementedRecorderServer) StartRecord(context.Context, *StartRecordReq) (*StartRecordRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartRecord not implemented")
 }
-func (*UnimplementedRecorderServer) StopRecord(context.Context, *RequestParam) (*ReplyParam, error) {
+func (*UnimplementedRecorderServer) StopRecord(context.Context, *StopRecordReq) (*StopRecordRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopRecord not implemented")
 }
 func (*UnimplementedRecorderServer) mustEmbedUnimplementedRecorderServer() {}
@@ -73,7 +73,7 @@ func RegisterRecorderServer(s *grpc.Server, srv RecorderServer) {
 }
 
 func _Recorder_StartRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestParam)
+	in := new(StartRecordReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -85,13 +85,13 @@ func _Recorder_StartRecord_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/recorder.Recorder/StartRecord",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderServer).StartRecord(ctx, req.(*RequestParam))
+		return srv.(RecorderServer).StartRecord(ctx, req.(*StartRecordReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Recorder_StopRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RequestParam)
+	in := new(StopRecordReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -103,7 +103,7 @@ func _Recorder_StopRecord_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/recorder.Recorder/StopRecord",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderServer).StopRecord(ctx, req.(*RequestParam))
+		return srv.(RecorderServer).StopRecord(ctx, req.(*StopRecordReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
