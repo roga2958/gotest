@@ -13,13 +13,8 @@
 // limitations under the License.
 
 syntax = "proto3";
-
-//option go_package = "google.golang.org/grpc/examples/helloworld/helloworld";
-//option java_multiple_files = true;
-//option java_package = "io.grpc.examples.helloworld";
-//option java_outer_classname = "RecorderProto";
-
-package recorder;
+package proto;
+option go_package = ".;proto";
 
 // The record service definition.
 service Recorder {
